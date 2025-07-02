@@ -1,7 +1,7 @@
 // crear un objeto mapa
 var map = L.map("map").setView([-10.102853, -75.260435], 6);
 
-// MAPAS BASE
+///////////////////////////// MAPAS BASE ////////////////////////////////
 
 // mapa base openstreetmap
 var osm = L.tileLayer(
@@ -38,18 +38,34 @@ var EsriTerrain = L.tileLayer(
 //   "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
 // ).addTo(map);
 
-
 // national geographic
 // var EsriNatGeo = L.tileLayer(
 //   "https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}"
 // ).addTo(map);
 
-// ELEMENTOS VECTORIALES
-var RestosArqueologicos = L.geoJSON(restos);
+/////////////////////// ELEMENTOS VECTORIALES /////////////////////////////
+var RestosArqueologicos = L.geoJSON(restos,{
+  pointToLayer: function(feature,latlng){
+    return L.marker(latlng,{
+      icon: restos_icono
+    })
+  }
+});
+
 var RedHidrica = L.geoJSON(RedHidrica);
 var departamentos = L.geoJSON(departamentos);
+// var PasivosAmbientales = L.geoJSON(pasivos);
 
-// AGREGAR DICCIONARIO DE MAPAS BASE
+var PasivosAmbientales = L.geoJSON(pasivos,{
+  pointToLayer: function(feature,latlng){
+    return L.marker(latlng,{
+      icon: pasivos_icono
+    })
+  }
+});
+
+
+/////////////// AGREGAR DICCIONARIO DE MAPAS BASE /////////////////////////
 var baseMaps = {
   "Desactivar mapas": L.layerGroup([]),
   "Google Street": GoogleStreet,
@@ -62,17 +78,18 @@ var baseMaps = {
   // "Esri National Geographic": EsriNatGeo
 };
 
-// AGREGAR DICCIONARIO DE CAPAS VECTORIALES
+//////////  AGREGAR DICCIONARIO DE CAPAS VECTORIALES ///////////////////////////
 var layers = {
   "Restos Arqueológicos": RestosArqueologicos,
   "Red Hidrica": RedHidrica,
-  "Departamentos": departamentos
+  "Departamentos": departamentos,
+  "Pasivos ambientales": PasivosAmbientales,
 };
 
-// AGREGAR CONTROLES DE CAPAS
+///////////////////  AGREGAR CONTROLES DE CAPAS ///////////////////////////// 
 L.control.layers(baseMaps, layers).addTo(map);
 
-// AGREGAR BARRA DE ESCALA
+/////////////////////  AGREGAR BARRA DE ESCALA ///////////////////////////// 
 L.control.scale({
     position: 'bottomleft',  // Posición de la barra de escala
     metric: true,            // Mostrar escala métrica (km, m)
