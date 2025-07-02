@@ -54,8 +54,8 @@ var baseMaps = {
   "Desactivar mapas": L.layerGroup([]),
   "Google Street": GoogleStreet,
   "Terreno Esri": EsriTerrain,
+  "OpenStreetMap": osm,
   "Google Satelite": GoogleSatellite,
-  "OpenStreetMap": osm
   // "Esri Relieve": Relieve
   // "Carto Gris": CartoGrey,
   // "Carto Oscuro": CartoDark,
