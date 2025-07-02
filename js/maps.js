@@ -52,10 +52,10 @@ var departamentos = L.geoJSON(departamentos);
 // AGREGAR DICCIONARIO DE MAPAS BASE
 var baseMaps = {
   "Desactivar mapas": L.layerGroup([]),
-  "OpenStreetMap": osm,
   "Google Street": GoogleStreet,
   "Terreno Esri": EsriTerrain,
   "Google Satelite": GoogleSatellite,
+  "OpenStreetMap": osm
   // "Esri Relieve": Relieve
   // "Carto Gris": CartoGrey,
   // "Carto Oscuro": CartoDark,
