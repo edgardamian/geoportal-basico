@@ -1,0 +1,50 @@
+/* Estilo global para el cuerpo y el HTML para asegurar el 100% de altura y sin márgenes */
+body,
+html {
+  margin: 0; /* Sin márgenes */
+  padding: 0; /* Sin padding */
+  height: 100%; /* Altura al 100% */
+}
+
+/* Estilo para el header */
+header {
+  background-color: #0074d9; /* Color de fondo azul */
+  display: flex; /* Usamos flexbox para el diseño */
+  align-items: center; /* Alinear elementos verticalmente al centro */
+  padding: 5px; /* Espaciado interno */
+}
+
+/* Estilo para el logo */
+#logo {
+  height: 50px; /* Altura del logo */
+  margin-right: 20px; /* Margen a la derecha del logo */
+  display: flex; /* Usamos flexbox para el logo */
+  align-items: center; /* Alinear verticalmente el logo */
+}
+
+/* Estilo para el título */
+header h1 {
+  color: white; /* Color del texto */
+  text-align: center; /* Alinear texto al centro */
+  flex-grow: 1; /* Hacer que el título ocupe el espacio restante */
+}
+
+/* Estilo para el contenedor del mapa */
+#map {
+  /*border-style: solid;*/
+  height: calc(100% - 100px); /* Ajuste para incluir el header */
+  width: 100%;
+}
+
+/* Estilo responsive */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column; /* Cambiar dirección a columna en pantallas pequeñas */
+    text-align: center; /* Alinear texto al centro */
+  }
+
+  #logo {
+    margin-right: 0; /* Quitar margen derecho en pantallas pequeñas */
+    margin-bottom: 10px; /* Añadir margen inferior */
+  }
+}
